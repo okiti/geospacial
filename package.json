@@ -1,0 +1,79 @@
+{
+  "name": "fretello",
+  "engines": {
+    "node": "12.18.3",
+    "npm": "7.6.0"
+  },
+  "version": "1.0.0",
+  "description": "music",
+  "main": "index.js",
+  "scripts": {
+    "start": "forever -c \"node -r ./build/utils/validateEnvironmentVars.js\" ./build/index.js",
+    "dev": "nodemon --exec babel-node ./src/index.js --watch ./src",
+    "clean": "rm -rf ./build && mkdir build",
+    "test": "jest ./src/tests --verbose --coverage",
+    "build": "npm run clean && babel ./src -d ./build --copy-files",
+    "lint": "eslint ./src"
+  },
+  "author": "eric",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@hapi/joi": "^16.1.8",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "bunyan": "^1.8.14",
+    "bunyan-format": "^0.2.1",
+    "cors": "^2.8.5",
+    "datauri": "^3.0.0",
+    "dayjs": "^1.10.6",
+    "dotenv": "^6.2.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.3.0",
+    "express-requests-logger": "^2.0.7",
+    "forever": "^0.10.10",
+    "helmet": "^3.23.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.8",
+    "mongoose-float": "^1.0.4",
+    "mongoose-paginate-v2": "^1.4.2",
+    "nodemon": "^1.19.1",
+    "uuid": "^3.4.0",
+    "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "core-js": "^3.6.5",
+    "coveralls": "^3.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^6.0.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^10.5.1",
+    "supertest": "^4.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ],
+    "*.{css,html,js,json,md,yaml,yml}": [
+      "prettier -c"
+    ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": "2500"
+  }
+}

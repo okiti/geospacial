@@ -1,0 +1,15 @@
+{
+    "extends": "airbnb-base",
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "no-underscore-dangle": "off",
+      "linebreak-style": "off",
+      "object-curly-newline": "off",
+      "import/prefer-default-export": "off",
+      "arrow-parens": "off"
+    }
+  }
+  
