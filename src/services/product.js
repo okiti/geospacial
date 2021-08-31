@@ -38,7 +38,7 @@ export const getProducts = async (payload) => {
         spherical: true,
       },
     },
-    { $limit: 5 },
+    { $limit: 10 },
   ]);
 
   return products;
